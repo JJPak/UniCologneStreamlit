@@ -45,7 +45,7 @@ st.header(' 1. Check Excel File ')
 text_2 = """ First check if your Excel file is in the right format"""
 st.markdown(text_2)
 
-st.image(r"UniCologne_Streamlit\pages\images\icap_eval_plot.png")
+st.image(r"icap_eval_plot.png")
 
 text_3 = """ It is important that the first row of the Excel table is still the type of the data below (e.g. RAW.Average,
 ExtCal.Average, etc.). Furthermore do ***NOT*** delete or change the second (row with zeros), the third  (row with element name, measurement mode),
@@ -119,7 +119,7 @@ st.markdown(text_5)
 
 col1, col2, col3 = st.columns([1, 2, 1])
 col1.latex(r'\mathrm{LB = M - a * sd}')
-col2.image(r'pages\images\Dichteverteilung.png',
+col2.image(r'Dichteverteilung.png',
            caption=r'Source: https://www.geothermie.de/bibliothek/lexikon-der-geothermie/g/gauss-verteilung.html')
 col3.latex(r'\mathrm{UB = M + a * sd}')
 
@@ -307,7 +307,7 @@ Here we recommend 15 ng/g (=15 ppb). However you can choose freely where to set 
 set the concentration-cutoff = 0"""
 st.markdown(text16, unsafe_allow_html=True)
 
-st.image(r'pages\images\plots.png', caption="MORB data from Jenner and O'Neill 2012 (G-Cubed). Differences in W/Th and Nb/Ta ratios are espcecially observed for very low W and Ta concentrations")
+st.image(r'plots.png', caption="MORB data from Jenner and O'Neill 2012 (G-Cubed). Differences in W/Th and Nb/Ta ratios are espcecially observed for very low W and Ta concentrations")
 
 st.markdown(input_file_marker_1, unsafe_allow_html=True)  # input field marker
 ppb_cutoff = st.number_input('Concentration-cut off in ng/g (=ppb):', value=15)
