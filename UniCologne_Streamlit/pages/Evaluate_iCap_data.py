@@ -123,7 +123,7 @@ st.markdown(text_5)
 
 col1, col2, col3 = st.columns([1, 2, 1])
 col1.latex(r'\mathrm{LB = M - a * sd}')
-col2.image(r'Dichteverteilung.png',
+col2.image(path+'/images/Dichteverteilung.png',
            caption=r'Source: https://www.geothermie.de/bibliothek/lexikon-der-geothermie/g/gauss-verteilung.html')
 col3.latex(r'\mathrm{UB = M + a * sd}')
 
@@ -311,7 +311,7 @@ Here we recommend 15 ng/g (=15 ppb). However you can choose freely where to set 
 set the concentration-cutoff = 0"""
 st.markdown(text16, unsafe_allow_html=True)
 
-st.image(r'plots.png', caption="MORB data from Jenner and O'Neill 2012 (G-Cubed). Differences in W/Th and Nb/Ta ratios are espcecially observed for very low W and Ta concentrations")
+st.image(path +'/images/plots.png', caption="MORB data from Jenner and O'Neill 2012 (G-Cubed). Differences in W/Th and Nb/Ta ratios are espcecially observed for very low W and Ta concentrations")
 
 st.markdown(input_file_marker_1, unsafe_allow_html=True)  # input field marker
 ppb_cutoff = st.number_input('Concentration-cut off in ng/g (=ppb):', value=15)
