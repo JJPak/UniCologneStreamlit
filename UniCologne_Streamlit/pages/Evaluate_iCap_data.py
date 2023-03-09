@@ -48,6 +48,7 @@ st.markdown(text_0)
 st.header(' 1. Check Excel File ')
 text_2 = """ First check if your Excel file is in the right format"""
 st.markdown(text_2)
+st.markdown(path+'\images\icap_eval_plot.png')
 image1 = Image.open(path+'\images\icap_eval_plot.png')
 st.image(image1)
 
