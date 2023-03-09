@@ -1,10 +1,14 @@
 import streamlit as st
 import pandas as pd
 import io
+import os
 import numpy as np
 from PIL import Image
 from math import floor, log10
 from Module.iCap_eval import del_ycps, subsheets, calc_background_cps, filter_for_qualitiy_data
+
+
+path = os.path.dirname(__file__)
 
 # ---------------------------------------------------------------- Page layout
 
@@ -44,7 +48,7 @@ st.markdown(text_0)
 st.header(' 1. Check Excel File ')
 text_2 = """ First check if your Excel file is in the right format"""
 st.markdown(text_2)
-image1 = Image.open('icap_eval_plot.png')
+image1 = Image.open(path+'\images\icap_eval_plot.png')
 st.image(image1)
 
 text_3 = """ It is important that the first row of the Excel table is still the type of the data below (e.g. RAW.Average,
