@@ -38,7 +38,11 @@ st.header('3. Transpose data')
 
 st.subheader('3.1. Choose the element')
 
-element = st.text_input('Which element do you analyze', placeholder='Add element')
+element = st.selectbox(
+    'Which element do you choose',
+    ('W','Mo'))
+
+st.write('You selected:', element)
 
 make_calculation = st.button('Push Button to transpose Data')
 
