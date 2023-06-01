@@ -158,6 +158,8 @@ def calc_background_cps(df_cps, name_of_BG : str = 'BG', name_of_wash : str= 'HN
     # calc mean and sd
     try:
         df_cps_copy = df_cps.copy()
+        st.write(name_of_BG)
+        st.write(name_of_wash)
         df_cps_copy.replace([name_of_BG, name_of_wash],np.nan)
         st.write(df_cps_copy)
         st.write(df_cps_copy.mean())
