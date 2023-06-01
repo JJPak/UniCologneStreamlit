@@ -60,7 +60,7 @@ if upload_excel != None and make_calculation == True:
     
     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         excel_file.to_excel(writer, sheet_name='Transposed Data')
-        writer.save()
+        writer.close()
         
         st.download_button(
             label="Download Excel worksheet",
