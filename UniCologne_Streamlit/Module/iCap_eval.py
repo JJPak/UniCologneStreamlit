@@ -161,13 +161,13 @@ def calc_background_cps(df_cps, name_of_BG : str = 'BG', name_of_wash : str= 'HN
         df_cps_copy.replace([name_of_BG, name_of_wash],np.nan)
         st.write(df_cps)
         st.success(f""" 0 """)
-        df_cps_mean = pd.Series(dict(df_cps.mean()))        #error somewhere here cannot convert string to float - why is there a string
+        df_cps_mean = pd.Series(dict(df_cps_copy.mean()))        #error somewhere here cannot convert string to float - why is there a string
         st.success(f""" 1 """)
         df_cps_mean['Sample'] = 'Mean'
         st.success(f""" 2 """)
         df_cps_mean['Order'] = 'Mean'
         st.success(f""" 3 """)
-        df_cps_sd = pd.Series(dict(df_cps.std()))
+        df_cps_sd = pd.Series(dict(df_cps_copy.std()))
         st.success(f""" 4 """)
         df_cps_sd['Sample'] = 'Standard deviation'
         df_cps_sd['Order'] = 'Standard deviation'
