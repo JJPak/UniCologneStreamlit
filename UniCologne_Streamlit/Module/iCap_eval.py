@@ -158,9 +158,13 @@ def calc_background_cps(df_cps, name_of_BG : str = 'BG', name_of_wash : str= 'HN
     # calc mean and sd
     try:
         df_cps_mean = pd.Series(dict(df_cps.mean()))
+        st.success(f""" 1 """)
         df_cps_mean['Sample'] = 'Mean'
+        st.success(f""" 2 """)
         df_cps_mean['Order'] = 'Mean'
+        st.success(f""" 3 """)
         df_cps_sd = pd.Series(dict(df_cps.std()))
+        st.success(f""" 4 """)
         df_cps_sd['Sample'] = 'Standard deviation'
         df_cps_sd['Order'] = 'Standard deviation'
         
@@ -171,12 +175,13 @@ def calc_background_cps(df_cps, name_of_BG : str = 'BG', name_of_wash : str= 'HN
         #add mean and sd to df_cps
         df_cps = pd.concat([df_cps, df_cps_mean.to_frame().T, df_cps_sd.to_frame().T] ).reset_index(drop=True)
         background_calc_df_cps = df_cps[((df_cps['Sample']=='Mean') | (df_cps['Sample']=='Standard deviation'))].reset_index(drop=True)
+        return [background_calc_df_cps, df_cps]
     except Exception:
         st.error(f"""  An error occured during function "calc_background_cps" while trying to build BG/HNO3 dataframe """)
         traceback.print_exc()
         
         
-    return [background_calc_df_cps, df_cps]
+    
 
 # ---------------------------------------------------------------- filter for quality data - delete non quality data
 def filter_for_qualitiy_data (df_cps, background_mean_sd_df, df_conc_RSD, df_conc, df_calib_coef, name_blank: str, name_one_calib : str, multiplicity_BG : int = 6, cut_off_RSD : float = 10, cut_off_ppb : int = 15, calib_BG_HNO3_names=['BG','HNO3','BIR-1','JB-2','BHVO-2','BCR-2', 'AGV-2']):
