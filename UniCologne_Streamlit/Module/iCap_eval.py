@@ -159,7 +159,9 @@ def calc_background_cps(df_cps, name_of_BG : str = 'BG', name_of_wash : str= 'HN
     try:
         df_cps_copy = df_cps.copy()
         df_cps_copy.replace([name_of_BG, name_of_wash],np.nan)
-        st.write(df_cps)
+        st.write(df_cps_copy)
+        st.write(df_cps_copy.mean())
+        st.write(dict(df_cps_copy.mean()))
         st.success(f""" 0 """)
         df_cps_mean = pd.Series(dict(df_cps_copy.mean()))        #error somewhere here cannot convert string to float - why is there a string
         st.success(f""" 1 """)
