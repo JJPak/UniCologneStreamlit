@@ -434,7 +434,7 @@ if evaluate_quest == True:
             df_conc_RSD.to_excel(writer, sheet_name='Concentration RSD')
             df_calib_coef.to_excel(writer, sheet_name='Calibration coef')       
 
-            writer.save()
+            writer.close()
             
             st.download_button(
                 label="Download Excel worksheet",
