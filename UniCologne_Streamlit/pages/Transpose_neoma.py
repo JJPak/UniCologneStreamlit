@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-from Module.Transpose_neptune import transpose_Neptune_To_Excel
+from Module.Transpose_Neoma import data_crunch_neoma
 import io
 
 
