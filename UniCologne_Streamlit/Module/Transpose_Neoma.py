@@ -1,4 +1,5 @@
-
+import pandas as pd
+import numpy as np
 
 def data_crunch_neoma (df, element_choose):
     
