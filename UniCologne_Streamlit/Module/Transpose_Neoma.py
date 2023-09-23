@@ -1,6 +1,19 @@
 import pandas as pd
 import numpy as np
 
+
+def append_empty_row(df): # a function that appends an empty row at the end of a dataframe
+    empty_list = []
+    column_names = []
+    for i in df:
+        empty_list.append(np.nan)
+        column_names.append(i)
+        
+    empty_row = pd.Series(empty_list, index=column_names)
+    df = pd.concat([df,empty_row.to_frame().T]).reset_index(drop=True)
+    return df
+
+
 def data_crunch_neoma (df, element_choose):
     
     df_list = []
