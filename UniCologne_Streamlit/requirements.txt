@@ -1,6 +1,7 @@
 streamlit
+openpyxl == 3.1.0
 pandas
-openpyxl
+
 numpy
 XlsxWriter
 
