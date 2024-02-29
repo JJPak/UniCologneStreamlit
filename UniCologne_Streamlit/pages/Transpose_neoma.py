@@ -13,7 +13,7 @@ st.title ('Crunch data from Neoma for Excel')
 
 
 st.header('1. Upload you data')
-upload_excel = st.file_uploader('XLSX file uploader', type = ['csv'])
+upload_excel = st.file_uploader('XLSX file uploader', type = ['csv','xlsx'])
 
 if upload_excel is not None:
     df = pd.read_csv(upload_excel,sep=';',engine='python')
