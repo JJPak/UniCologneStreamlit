@@ -43,7 +43,7 @@ def transpose_oldNeptune_To_Excel (df, element, export_name):
     
     # drop the last 13 rows with mean, error, sd etc.
     for i in range(len(list_pandas)):
-        list_pandas[i] = list_pandas[i].drop(list_pandas[i].index[60:71]).reset_index(drop = True)
+        list_pandas[i] = list_pandas[i].drop(list_pandas[i].index[60:69]).reset_index(drop = True)
         
     # The first column header is the name of the file, the full collumn is the name of the file
     # This would be problematic once the files will be concated
