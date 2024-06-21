@@ -25,20 +25,20 @@ def data_crunch_neoma (df, element_choose):
     if element_choose == 'W':
         element_list_orig = ['Static 1:177Hf', 'Static 1:178Hf', 'Static 1:180W', 'Static 1:181Ta', 'Static 1:182W', 'Static 1:183W',
                          'Static 1:184W','Static 1:186W', 'Static 1:188Os', '180W/184W', '182W/184W', '183W/184W', '186W/184W',
-                         '177Hf/184W', '181Ta/184W' '188Os/184W']
+                         '177Hf/184W', '181Ta/184W' '188Os/184W','Static 1:182W.O']
 
         element_list_rename = ['177Hf', '178Hf', '180W', '181Ta', '182W', '183W', '184W', '186W', '188Os',
-                            '180W/184W', '182W/184W', '183W/184W', '186W/184W',  '177Hf/184W', '181Ta/184W', '188Os/184W']
+                            '180W/184W', '182W/184W', '183W/184W', '186W/184W',  '177Hf/184W', '181Ta/184W', '188Os/184W','182WO']
 
 
-        missing_ratios_list      = ['180W/183W', '182W/183W', '184W/183W', '186W/183W', '177Hf/183W','181Ta/183W', '188Os/183W'  ]
-        numerator_list           = ['180W',      '182W',      '184W',      '186W',      '177Hf',     '181Ta',      '188Os'       ]
-        denominator_list         = [     '183W',      '183W',      '183W',      '183W',       '183W',      '183W',       '183W'  ]
+        missing_ratios_list      = ['180W/183W', '182W/183W', '184W/183W', '186W/183W', '177Hf/183W','181Ta/183W', '188Os/183W', '182WO/182W'  ]
+        numerator_list           = ['180W',      '182W',      '184W',      '186W',      '177Hf',     '181Ta',      '188Os',      '182WO'       ]
+        denominator_list         = [     '183W',      '183W',      '183W',      '183W',       '183W',      '183W',       '183W',        '182W' ]
 
         final_order_list = ['177Hf', '178Hf', '180W', '181Ta', '182W', '183W', '184W', '186W', '188Os',
                             '180W/184W', '182W/184W', '183W/184W', '186W/184W', '180W/183W', '182W/183W',
                             '184W/183W', '186W/183W', '177Hf/184W', '181Ta/184W', '188Os/184W', '177Hf/183W',
-                            '181Ta/183W', '188Os/183W']
+                            '181Ta/183W', '188Os/183W', '182WO/182W']
 
     
     
