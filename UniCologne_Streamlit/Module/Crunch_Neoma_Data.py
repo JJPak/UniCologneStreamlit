@@ -59,6 +59,9 @@ def crunch_neoma_data(df, isotope_system ):
     df = df[2:] #take the data less the header row
     df.columns = new_header #set the header row as the df header
 
+    # transfer all numbers that are string to float in dataframe - needed if df is from csv
+    df = df.apply(pd.to_numeric, errors='coerce')
+    
     # Calculate the 1se % for each element
 
     for i in list_measured:
