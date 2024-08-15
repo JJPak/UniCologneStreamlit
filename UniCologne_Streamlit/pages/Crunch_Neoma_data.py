@@ -35,7 +35,7 @@ try:
              st.success('Upload was successful')
 except: 
          if upload_excel is not None:
-             df = pd.read_excel(upload_excel,engine='python')
+             df = pd.read_excel(upload_excel)
              st.success('Upload was successful')
                   
 if upload_excel == None:
