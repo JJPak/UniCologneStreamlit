@@ -1,3 +1,5 @@
+import pandas as pd
+
 def crunch_neoma_data(df, isotope_system ):
 
 
