@@ -29,10 +29,15 @@ st.write('10. Follow further instruction within the website')
 
 st.header('2. Upload you data')
 upload_excel = st.file_uploader('CSV file uploader', type = ['csv','xlsx'])
-
-if upload_excel is not None:
-    df = pd.read_csv(upload_excel,sep=';',engine='python')
-    st.success('Upload was successful')
+try:
+         if upload_excel is not None:
+             df = pd.read_csv(upload_excel,sep=';',engine='python')
+             st.success('Upload was successful')
+except: 
+         if upload_excel is not None:
+             df = pd.read_excel(upload_excel,engine='python')
+             st.success('Upload was successful')
+                  
 if upload_excel == None:
     text_3 = '<span style="color:red"> You did not upload a file yet. </style>' 
     st.markdown(text_3, unsafe_allow_html=True)
