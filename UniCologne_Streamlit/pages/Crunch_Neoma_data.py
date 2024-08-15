@@ -25,6 +25,8 @@ st.write('7. Choose your export Path and your Filename')
 st.write('8. Export your data')
 st.write('9. Drag and Drop the CSV file into the area below')
 st.write('10. Follow further instruction within the website')
+st.write()
+st.write('CRUNCHING FOR NEW ELEMENTS NEEDED? - CONTACT JP')
          
 
 st.header('2. Upload you data')
