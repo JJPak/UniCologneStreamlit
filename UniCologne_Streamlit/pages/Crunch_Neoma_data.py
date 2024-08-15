@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-from Module.Transpose_Neoma import data_crunch_neoma
+from Module.Crunch_Neoma_Data import crunch_neoma_data
 import io
 
 
@@ -67,7 +67,7 @@ if upload_excel == None and make_calculation == True:
 if upload_excel != None and make_calculation == True:
     
     with st.spinner('Calculating this can take a few seconds...'):
-        excel_file = data_crunch_neoma (df, element)
+        excel_file = crunch_neoma_data (df, element)
         st.success('The data was successfully filtered and transposed')
     
     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
@@ -77,5 +77,5 @@ if upload_excel != None and make_calculation == True:
         st.download_button(
             label="Download Excel worksheet",
             data=buffer,
-            file_name="transposed_neoma.xlsx"
+            file_name= element+"_crunched_neoma.xlsx"
         )
