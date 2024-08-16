@@ -40,7 +40,16 @@ def data_crunch_neoma (df, element_choose):
                             '184W/183W', '186W/183W', '177Hf/184W', '181Ta/184W', '188Os/184W', '177Hf/183W',
                             '181Ta/183W', '188Os/183W']
 
-    
+    if element_choose == 'Hf':
+        element_list_orig = ['Static 1:173Yb', 'Static 1:174Hf', 'Static 1:175Lu', 'Static 1:176Hf', 'Static 1:177Hf', 'Static 1:178Hf', 'Static 1:179Hf', 'Static 1:180Hf', 'Static 1:181Ta', 'Static 1:183W', 'Static 1:177Hf.O']
+
+        element_list_rename = ['173Yb','174Hf','175Lu','176Hf','177Hf','178Hf','179Hf','180Hf','181Ta','183W','177HfO']
+
+        missing_ratios_list      = ['173Yb/177Hf','174Hf/177Hf','175Lu/177Hf','176Hf/177Hf','178Hf/177Hf','179Hf/177Hf','180Hf/177Hf','181Ta/177Hf','183W/177Hf']
+        numerator_list           = ['173Ybf'     ,'174Hf'      ,'175Lu  ',    '176Hf  ',     '178Hf  ',   '179Hf  ',   '180Hf  ',    '181Ta  ',     '183W   ']
+        denominator_list         = ['177Hf','177Hf','177Hf','177Hf','177Hf','177Hf','177Hf','177Hf','177Hf']
+
+        final_order_list = ['173Yb','174Hf','175Lu','176Hf','177Hf','178Hf','179Hf','180Hf','181Ta','183W','177HfO','173Yb/177Hf','174Hf/177Hf','175Lu/177Hf','176Hf/177Hf','178Hf/177Hf','179Hf/177Hf','180Hf/177Hf','181Ta/177Hf','183W/177Hf']    
     
     
     
