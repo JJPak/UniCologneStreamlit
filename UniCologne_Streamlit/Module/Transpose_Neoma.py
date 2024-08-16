@@ -163,7 +163,7 @@ def data_crunch_neoma (df, element_choose):
         sample_list3.append(frames_new)
         
     # combine all dfs and transpose
-    df_new = pd.concat(sample_list3)
+    df_new = pd.concat(sample_list3).reset_index()
     final_df = df_new.T
 
 
