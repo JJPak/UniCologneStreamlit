@@ -55,9 +55,10 @@ if upload_excel == None and make_calculation == True:
 if upload_excel != None and make_calculation == True:
     
     with st.spinner('Calculating this can take a few seconds...'):
-        excel_file = data_crunch_neoma (df, element)
-        st.success('The data was successfully filtered and transposed')
-        st.write(excel_file)
+        #excel_file = data_crunch_neoma (df, element)
+        st.write(data_crunch_neoma (df, element))
+        #st.success('The data was successfully filtered and transposed')
+        #st.write(excel_file)
     
     # with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     #     excel_file.to_excel(writer, sheet_name='Transposed Data')
