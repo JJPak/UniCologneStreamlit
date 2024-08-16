@@ -43,7 +43,7 @@ element = st.selectbox(
     ('W', 'Hf',))
 
 st.write('You selected:', element)
-
+st.write(df)
 make_calculation = st.button('Push Button to transpose Data')
 
 
