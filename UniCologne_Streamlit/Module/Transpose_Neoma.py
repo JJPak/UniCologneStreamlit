@@ -25,7 +25,7 @@ def data_crunch_neoma (df, element_choose):
     if element_choose == 'W':
         element_list_orig = ['Static 1:177Hf', 'Static 1:178Hf', 'Static 1:180W', 'Static 1:181Ta', 'Static 1:182W', 'Static 1:183W',
                          'Static 1:184W','Static 1:186W', 'Static 1:188Os', '180W/184W', '182W/184W', '183W/184W', '186W/184W',
-                         '177Hf/184W', '181Ta/184W' '188Os/184W']
+                         '177Hf/184W', '181Ta/184W', '188Os/184W']
 
         element_list_rename = ['177Hf', '178Hf', '180W', '181Ta', '182W', '183W', '184W', '186W', '188Os',
                             '180W/184W', '182W/184W', '183W/184W', '186W/184W',  '177Hf/184W', '181Ta/184W', '188Os/184W']
