@@ -40,7 +40,7 @@ st.subheader('3.1. Choose the element')
 
 element = st.selectbox(
     'Which element do you choose',
-    ('W'))
+    ('W', 'Hf',))
 
 st.write('You selected:', element)
 
