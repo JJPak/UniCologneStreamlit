@@ -59,12 +59,12 @@ if upload_excel != None and make_calculation == True:
         st.success('The data was successfully filtered and transposed')
         st.write(excel_file)
     
-    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-        excel_file.to_excel(writer, sheet_name='Transposed Data')
-        writer.close()
+    # with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+    #     excel_file.to_excel(writer, sheet_name='Transposed Data')
+    #     writer.close()
         
-        st.download_button(
-            label="Download Excel worksheet",
-            data=buffer,
-            file_name="transposed_neoma.xlsx"
-        )
+    #     st.download_button(
+    #         label="Download Excel worksheet",
+    #         data=buffer,
+    #         file_name="transposed_neoma.xlsx"
+    #     )
