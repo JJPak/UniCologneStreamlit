@@ -41,12 +41,14 @@ def data_crunch_neoma (df, element_choose):
                             '181Ta/183W', '188Os/183W']
 
     if element_choose == 'Hf':
-        element_list_orig = ['Static 1:173Yb', 'Static 1:174Hf', 'Static 1:175Lu', 'Static 1:176Hf', 'Static 1:177Hf', 'Static 1:178Hf', 'Static 1:179Hf', 'Static 1:180Hf', 'Static 1:181Ta', 'Static 1:183W', 'Static 1:177Hf.O']
+        
+        element_list_orig = ['Static 1:173Yb', 'Static 1:174Hf', 'Static 1:175Lu', 'Static 1:176Hf', 'Static 1:177Hf', 
+                             'Static 1:178Hf', 'Static 1:179Hf', 'Static 1:180Hf', 'Static 1:181Ta', 'Static 1:183W', 'Static 1:177Hf.O']
 
         element_list_rename = ['173Yb','174Hf','175Lu','176Hf','177Hf','178Hf','179Hf','180Hf','181Ta','183W','177HfO']
 
         missing_ratios_list      = ['173Yb/177Hf','174Hf/177Hf','175Lu/177Hf','176Hf/177Hf','178Hf/177Hf','179Hf/177Hf','180Hf/177Hf','181Ta/177Hf','183W/177Hf']
-        numerator_list           = ['173Ybf'     ,'174Hf'      ,'175Lu  ',    '176Hf  ',     '178Hf  ',   '179Hf  ',   '180Hf  ',    '181Ta  ',     '183W   ']
+        numerator_list           = ['173Yb'     ,'174Hf'      ,'175Lu',      '176Hf',       '178Hf',      '179Hf',      '180Hf',      '181Ta',      '183W']
         denominator_list         = ['177Hf','177Hf','177Hf','177Hf','177Hf','177Hf','177Hf','177Hf','177Hf']
 
         final_order_list = ['173Yb','174Hf','175Lu','176Hf','177Hf','178Hf','179Hf','180Hf','181Ta','183W','177HfO','173Yb/177Hf','174Hf/177Hf','175Lu/177Hf','176Hf/177Hf','178Hf/177Hf','179Hf/177Hf','180Hf/177Hf','181Ta/177Hf','183W/177Hf']    
@@ -60,17 +62,17 @@ def data_crunch_neoma (df, element_choose):
     df = df.rename(columns = {'Unnamed: 0':'Measurement order', 'Unnamed: 1':'Sample'})
     
     check_elements = df.iloc[[1]].values.tolist()
-    
+
     #check if all element of interest can be found in df
     # check if element_list_orig in df
-    for i in range(len(element_list_orig[0])):
-        if element_list_orig[i] not in check_elements[0]:
-            return print('ERROR: the CSV FILE does not contain '+ element_list_orig[i])
+    for i in element_list_orig:
+        if i not in check_elements[0]:
+            return print('ERROR: the CSV FILE does not contain '+ i)
     
     # change order of columns
     df.insert(0, 'Sample', df.pop('Sample'))
     
-    # rename cell in column 'Sample'
+    # # rename cell in column 'Sample'
     df.loc[0, 'Sample'] = 'Cycle'
     df.loc[1, 'Sample'] = 'Isotope'
     df.loc[2, 'Sample'] = 'Unit'
