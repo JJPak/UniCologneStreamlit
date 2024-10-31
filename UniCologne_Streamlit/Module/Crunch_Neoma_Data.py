@@ -5,16 +5,30 @@ def crunch_neoma_data(df, isotope_system ):
 
     # define all the elements that can be processed
 
-    Element = ['Hf']
+    Element = ['Hf','Nd']
 
-    Raw_data_list = [['173Yb Static 1', '174Hf Static 1', '175Lu Static 1', '176Hf Static 1', '177Hf Static 1', '178Hf Static 1', '179Hf Static 1', '180Hf Static 1', '181Ta Static 1', '183W Static 1', '177Hf.O Static 1',
+    Raw_data_list = [
+        ['173Yb Static 1', '174Hf Static 1', '175Lu Static 1', '176Hf Static 1', '177Hf Static 1', '178Hf Static 1', '179Hf Static 1', '180Hf Static 1', '181Ta Static 1', '183W Static 1', '177Hf.O Static 1',
                 '178Hf/177Hf', '179Hf/177Hf', '173Yb/177Hf', '175Lu/177Hf', '181Ta/177Hf', '183W/177Hf', '173Yb/176Hf monitor', '175Lu/176Hf monitor',
-                '174Hf/177Hf MB+I', '176Hf/177Hf MB+I', '180Hf/177Hf MB+I', '177Hf.O/177Hf']]
+                '174Hf/177Hf MB+I', '176Hf/177Hf MB+I', '180Hf/177Hf MB+I', '177Hf.O/177Hf'],
+        
+        ['150Nd Static 1', '149Sm Static 1', '148Nd Static 1', '147Sm Static 1', '146Nd Static 1', '145Nd Static 1', '144Nd Static 1', '143Nd Static 1', '142Nd Static 1', '140Ce Static 1', '142Nd.O Static 1', 
+        '142Nd/144Nd', '143Nd/144Nd', '145Nd/144Nd', '146Nd/144Nd', '148Nd/144Nd', '150Nd/144Nd', '140Ce/144Nd', '140Ce/142Nd', '147Sm/144Nd', '142Nd/140Ce', '144Nd/147Sm', '148Nd/147Sm', '150Nd/147Sm']
+                    ]
 
-    Interference_data_list = [['174Hf Static 1', '176Hf Static 1', '180Hf Static 1']]
+    Interference_data_list = [
+        ['174Hf Static 1', '176Hf Static 1', '180Hf Static 1'],
+
+        ['142Nd Static 1', '144Nd Static 1', '148Nd Static 1', '150Nd Static 1']
+    ]
     
-    Mass_bias_data_list = [['178Hf/177Hf', '179Hf/177Hf', '173Yb/177Hf', '175Lu/177Hf', '181Ta/177Hf', '183W/177Hf', '173Yb/176Hf monitor', '175Lu/176Hf monitor',
-                '174Hf/177Hf MB+I', '176Hf/177Hf MB+I', '180Hf/177Hf MB+I', '177Hf.O/177Hf']]
+    Mass_bias_data_list = [
+        ['178Hf/177Hf', '179Hf/177Hf', '173Yb/177Hf', '175Lu/177Hf', '181Ta/177Hf', '183W/177Hf', '173Yb/176Hf monitor', '175Lu/176Hf monitor',
+                '174Hf/177Hf MB+I', '176Hf/177Hf MB+I', '180Hf/177Hf MB+I', '177Hf.O/177Hf'],
+
+        ['143Nd/144Nd MB+I', '148Nd/144Nd MB+I', '150Nd/144Nd MB+I']
+    
+    ]
 
 ##################################################################################
 
