@@ -58,7 +58,7 @@ if upload_excel is not None and Table_checkbox == True:
 st.subheader('3.1. Choose the element')
 
 element = st.selectbox(
-    'Which element do you choose', ('Hf','Nd'))
+    'Which element do you choose', ('Hf','Nd', 'Cd'))
 
 st.write('You selected:', element)
 
