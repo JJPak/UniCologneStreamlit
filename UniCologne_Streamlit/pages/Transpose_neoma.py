@@ -10,7 +10,7 @@ st.set_page_config(layout = "wide")
 
 
 st.title ('Crunch data from Neoma for Excel')
-st.write('Export data as CSV file with Qtegra - use the "182W_cycle_export" Export scheme. Only tick "Export sample lines as rows" but not the rest. Make sure you use "Semicolon" as a "Column separator" and "Point" as "Decimal symbol".')
+st.write('Export data as CSV file with Qtegra - use the "182W_cycle_export" Export scheme. Only tick "Export sample lines as rows" and "Export complete LabBook" but not the rest. Make sure you use "Semicolon" as a "Column separator" and "Point" as "Decimal symbol".')
 
 st.header('1. Upload you data')
 upload_excel = st.file_uploader('XLSX file uploader', type = ['csv','xlsx'])
