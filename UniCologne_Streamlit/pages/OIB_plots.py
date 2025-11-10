@@ -81,12 +81,12 @@ def main():
         st.write(f"Aktiver Island-Filter: {', '.join(selected_islands)}")
 
     # Achsen-Auswahl
-    idx_col1 = available_columns.index("1") if "1" in available_columns else 0
-    x1 = st.selectbox("X1:", available_columns, index=idx_col1)
-    x2 = st.selectbox("X2:", available_columns, index=idx_col1)
-    y1 = st.selectbox("Y1:", available_columns, index=idx_col1)
-    y2 = st.selectbox("Y2:", available_columns, index=idx_col1)
-
+    available_columns = list(filtered_df.columns)
+    col1_index = available_columns.index("1") if "1" in available_columns else 0
+    x1 = st.selectbox("X1:", available_columns, index=col1_index)
+    x2 = st.selectbox("X2:", available_columns, index=col1_index)
+    y1 = st.selectbox("Y1:", available_columns, index=col1_index)
+    y2 = st.selectbox("Y2:", available_columns, index=col1_index)
     # Add the log scale checkboxes
     col1, col2 = st.columns(2)
     with col1:
