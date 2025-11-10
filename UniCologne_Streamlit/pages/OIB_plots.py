@@ -82,10 +82,10 @@ def main():
 
     # Achsen-Auswahl
     available_columns = list(filtered_df.columns)
-    x1 = st.selectbox("X1:", available_columns)
-    x2 = st.selectbox("X2:", available_columns)
-    y1 = st.selectbox("Y1:", available_columns)
-    y2 = st.selectbox("Y2:", available_columns)
+    x1 = st.selectbox("X1:", available_columns, index=1)
+    x2 = st.selectbox("X2:", available_columns, index=1)
+    y1 = st.selectbox("Y1:", available_columns, index=1)
+    y2 = st.selectbox("Y2:", available_columns, index=1)
 
     # Add the log scale checkboxes
     col1, col2 = st.columns(2)
