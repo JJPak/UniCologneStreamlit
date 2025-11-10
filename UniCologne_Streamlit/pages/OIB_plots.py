@@ -87,15 +87,17 @@ def main():
     y1 = st.selectbox("Y1:", available_columns)
     y2 = st.selectbox("Y2:", available_columns)
 
-    # Achsenlimits
-    x_min = st.number_input("X min:", value=0.0)
-    x_max = st.number_input("X max:", value=1.0)
-    y_min = st.number_input("Y min:", value=0.0)
-    y_max = st.number_input("Y max:", value=1.0)
+    # Add the log scale checkboxes
+    col1, col2 = st.columns(2)
+    with col1:
+        x_log = st.checkbox("Log scale for X-axis", value=False)
+    with col2:
+        y_log = st.checkbox("Log scale for Y-axis", value=False)
 
-    show_background = st.checkbox("Alle Hotspots im Hintergrund", value=False)
+    # Achsenlimits and autoscale button
+    autoscale_btn = st.button("Autoscale axes")
 
-    # Plot
+    # Compute ratios
     def compute_full_ratios(df, x1, x2, y1, y2):
         x_num = pd.to_numeric(df[x1], errors='coerce')
         x_den = pd.to_numeric(df[x2], errors='coerce')
@@ -108,6 +110,27 @@ def main():
 
     x_ratio_full, y_ratio_full = compute_full_ratios(filtered_df, x1, x2, y1, y2)
     valid_all = x_ratio_full.notna() & y_ratio_full.notna() & np.isfinite(x_ratio_full) & np.isfinite(y_ratio_full)
+    x_vals_autoscale = x_ratio_full[valid_all]
+    y_vals_autoscale = y_ratio_full[valid_all]
+
+    # Provide autoscale functionality
+    if autoscale_btn:
+        # Only consider positive values if log scale is used
+        if x_log:
+            x_vals_autoscale = x_vals_autoscale[x_vals_autoscale > 0]
+        if y_log:
+            y_vals_autoscale = y_vals_autoscale[y_vals_autoscale > 0]
+        x_min = float(x_vals_autoscale.min()) if not x_vals_autoscale.empty else 0.0
+        x_max = float(x_vals_autoscale.max()) if not x_vals_autoscale.empty else 1.0
+        y_min = float(y_vals_autoscale.min()) if not y_vals_autoscale.empty else 0.0
+        y_max = float(y_vals_autoscale.max()) if not y_vals_autoscale.empty else 1.0
+    else:
+        x_min = st.number_input("X min:", value=0.0)
+        x_max = st.number_input("X max:", value=1.0)
+        y_min = st.number_input("Y min:", value=0.0)
+        y_max = st.number_input("Y max:", value=1.0)
+
+    show_background = st.checkbox("Alle Hotspots im Hintergrund", value=False)
 
     fig, ax = plt.subplots(figsize=(6,6), dpi=150)
 
@@ -115,7 +138,14 @@ def main():
     if show_background and bg_df is not None:
         x_bg, y_bg = compute_full_ratios(bg_df, x1, x2, y1, y2)
         valid_bg = x_bg.notna() & y_bg.notna() & np.isfinite(x_bg) & np.isfinite(y_bg)
-        ax.scatter(x_bg[valid_bg], y_bg[valid_bg], color='gray', alpha=0.5, label='Alle Daten', zorder=1, edgecolors='none', s=40)
+        x_bg_vals = x_bg[valid_bg]
+        y_bg_vals = y_bg[valid_bg]
+        # If log scale is set, filter only positive values
+        if x_log:
+            x_bg_vals = x_bg_vals[x_bg_vals > 0]
+        if y_log:
+            y_bg_vals = y_bg_vals[y_bg_vals > 0]
+        ax.scatter(x_bg_vals, y_bg_vals, color='gray', alpha=0.5, label='Alle Daten', zorder=1, edgecolors='none', s=40)
 
     # Gruppierungslogik
     def labelize(arr):
@@ -160,7 +190,12 @@ def main():
             continue
         x_vals = x_ratio_full[mask_idx].to_numpy()
         y_vals = y_ratio_full[mask_idx].to_numpy()
-        if x_vals.size == 0:
+        # If log scale is set, only plot positive non-zero values
+        if x_log:
+            x_vals = x_vals[x_vals > 0]
+        if y_log:
+            y_vals = y_vals[y_vals > 0]
+        if x_vals.size == 0 or y_vals.size == 0:
             continue
         plotted_any = True
         ax.scatter(x_vals, y_vals,
@@ -171,6 +206,10 @@ def main():
     ax.set_ylabel(f'{y1} / {y2}')
     ax.set_xlim(x_min, x_max)
     ax.set_ylim(y_min, y_max)
+    if x_log:
+        ax.set_xscale('log')
+    if y_log:
+        ax.set_yscale('log')
     ax.legend(loc='lower center', bbox_to_anchor=(0.5, -0.5), ncol=4)
     fig.tight_layout()
 
