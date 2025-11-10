@@ -8,8 +8,8 @@ import io
 @st.cache_data
 def load_data():
     df = pd.read_excel(
-        r'./Data/OIB data Hardardottir and Jackson 2025', 
-        sheet_name='Adjusted_df_plotting', 
+        r'./Data/Hardardottir_Jackson_2025_Chem_Geol_adjusted.xlsx', 
+        sheet_name='Tabelle1', 
         header=4
     )
     df[1] = 1
