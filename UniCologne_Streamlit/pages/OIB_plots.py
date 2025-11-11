@@ -113,38 +113,56 @@ def main():
     x_vals_autoscale = x_ratio_full[valid_all]
     y_vals_autoscale = y_ratio_full[valid_all]
 
-    # Provide autoscale functionality
-    if autoscale_btn:
-        # Only consider positive values if log scale is used
+    # Background ratios
+    if show_background := st.checkbox("Alle Hotspots im Hintergrund", value=False):
+        x_bg, y_bg = compute_full_ratios(bg_df, x1, x2, y1, y2)
+        valid_bg = x_bg.notna() & y_bg.notna() & np.isfinite(x_bg) & np.isfinite(y_bg)
+        x_bg_vals = x_bg[valid_bg]
+        y_bg_vals = y_bg[valid_bg]
         if x_log:
-            x_vals_autoscale = x_vals_autoscale[x_vals_autoscale > 0]
+            x_bg_vals = x_bg_vals[x_bg_vals > 0]
         if y_log:
-            y_vals_autoscale = y_vals_autoscale[y_vals_autoscale > 0]
-        x_min = float(x_vals_autoscale.min()) if not x_vals_autoscale.empty else 0.0
-        x_max = float(x_vals_autoscale.max()) if not x_vals_autoscale.empty else 1.0
-        y_min = float(y_vals_autoscale.min()) if not y_vals_autoscale.empty else 0.0
-        y_max = float(y_vals_autoscale.max()) if not y_vals_autoscale.empty else 1.0
+            y_bg_vals = y_bg_vals[y_bg_vals > 0]
+        x_all_vals = pd.concat([
+            x_vals_autoscale[x_vals_autoscale > 0] if x_log else x_vals_autoscale,
+            x_bg_vals
+        ])
+        y_all_vals = pd.concat([
+            y_vals_autoscale[y_vals_autoscale > 0] if y_log else y_vals_autoscale,
+            y_bg_vals
+        ])
     else:
-        x_min = st.number_input("X min:", value=0.0)
-        x_max = st.number_input("X max:", value=1.0)
-        y_min = st.number_input("Y min:", value=0.0)
-        y_max = st.number_input("Y max:", value=1.0)
+        x_all_vals = x_vals_autoscale[x_vals_autoscale > 0] if x_log else x_vals_autoscale
+        y_all_vals = y_vals_autoscale[y_vals_autoscale > 0] if y_log else y_vals_autoscale
 
-    show_background = st.checkbox("Alle Hotspots im Hintergrund", value=False)
+    # Use session state to keep values persistent and editable
+    if "x_min" not in st.session_state: st.session_state.x_min = 0.0
+    if "x_max" not in st.session_state: st.session_state.x_max = 1.0
+    if "y_min" not in st.session_state: st.session_state.y_min = 0.0
+    if "y_max" not in st.session_state: st.session_state.y_max = 1.0
+
+    # Autoscale logic
+    if autoscale_btn:
+        st.session_state.x_min = float(x_all_vals.min()) if not x_all_vals.empty else 0.0
+        st.session_state.x_max = float(x_all_vals.max()) if not x_all_vals.empty else 1.0
+        st.session_state.y_min = float(y_all_vals.min()) if not y_all_vals.empty else 0.0
+        st.session_state.y_max = float(y_all_vals.max()) if not y_all_vals.empty else 1.0
+
+    # Always show manual controls (use session_state for prefill)
+    st.session_state.x_min = st.number_input("X min:", value=st.session_state.x_min, key="x_min_num")
+    st.session_state.x_max = st.number_input("X max:", value=st.session_state.x_max, key="x_max_num")
+    st.session_state.y_min = st.number_input("Y min:", value=st.session_state.y_min, key="y_min_num")
+    st.session_state.y_max = st.number_input("Y max:", value=st.session_state.y_max, key="y_max_num")
+
+    x_min = st.session_state.x_min
+    x_max = st.session_state.x_max
+    y_min = st.session_state.y_min
+    y_max = st.session_state.y_max
 
     fig, ax = plt.subplots(figsize=(6,6), dpi=150)
 
     # Hintergrunddaten
     if show_background and bg_df is not None:
-        x_bg, y_bg = compute_full_ratios(bg_df, x1, x2, y1, y2)
-        valid_bg = x_bg.notna() & y_bg.notna() & np.isfinite(x_bg) & np.isfinite(y_bg)
-        x_bg_vals = x_bg[valid_bg]
-        y_bg_vals = y_bg[valid_bg]
-        # If log scale is set, filter only positive values
-        if x_log:
-            x_bg_vals = x_bg_vals[x_bg_vals > 0]
-        if y_log:
-            y_bg_vals = y_bg_vals[y_bg_vals > 0]
         ax.scatter(x_bg_vals, y_bg_vals, color='gray', alpha=0.5, label='Alle Daten', zorder=1, edgecolors='none', s=40)
 
     # Gruppierungslogik
