@@ -228,7 +228,7 @@ def main():
         ax.set_xscale('log')
     if y_log:
         ax.set_yscale('log')
-    ax.legend(loc='lower center', bbox_to_anchor=(0.5, -1), ncol=4)
+    ax.legend(loc='lower center', bbox_to_anchor=(0.5, -0.5), ncol=4)
     #fig.tight_layout()
 
     st.pyplot(fig)
